@@ -39,19 +39,20 @@ const MORSE_TABLE = {
 
 function decode(expr) {
     // write your solution here
-  var words = (morseCode).split('  ');
-  var letters = words.map((w) => w.split(' '));
-  var decoded = [];
+ let letter;
+ let revletter = '';
 
-  for(var i = 0; i < letters.length; i++){
-    decoded[i] = [];
-    for(var x = 0; x < letters[i].length; x++){
-        if(MORSE_CODE[letters[i][x]]){
-            decoded[i].push( MORSE_CODE[letters[i][x]] );
-        }
-    }
-  }
-  return decoded.map(arr => arr.join('')).join(' ');
+ for (i = 0 ; i < expr.length; i +=10) {
+
+ letter = expr.slice ( i , i + 10 ).replace(/00/g,'').replace(/10/g,'.').replace(/11/g,'-');
+
+ if ( letter  === '**********') {
+revletter += ' '
+ } else {
+    revletter += MORSE_TABLE[letter];}
+ };
+
+ return revletter;
 }
 
 module.exports = {
