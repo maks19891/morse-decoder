@@ -51,8 +51,8 @@ function decode(expr) {
         }
     }
   }
-
   return decoded.map(arr => arr.join('')).join(' ');
+}
 
 module.exports = {
     decode
